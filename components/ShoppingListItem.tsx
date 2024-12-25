@@ -15,19 +15,31 @@ export function ShoppingListItem({name, isCompleted = false}: Props) {
         ]);
       }
 
+    // return (
+    //   <View style = {{alignItems: "center", marginBottom: 20}}>
+    //       <View style={[styles.itemContainer, isCompleted? styles.completedItemContainer : undefined]}>
+    //           <Text style={isCompleted? styles.completedText : undefined}>{name}</Text>
+    //       </View>
+    //       <TouchableOpacity onPress={handleDelete} 
+    //       // style={[styles.button, isCompleted? styles.completedButton : undefined]} 
+    //       activeOpacity={0.8} disabled={isCompleted}>
+    //           {/* <Text style={[styles.buttonText]}>Delete</Text> */}
+    //           <AntDesign name="closecircle" size={24} color={isCompleted? "grey" : "red"} />
+    //       </TouchableOpacity>
+    //   </View>
+    // );
     return (
-      <View style = {{alignItems: "center", marginBottom: 20}}>
-          <View style={[styles.itemContainer, isCompleted? styles.completedItemContainer : undefined]}>
-              <Text style={isCompleted? styles.completedText : undefined}>{name}</Text>
-          </View>
-          <TouchableOpacity onPress={handleDelete} 
-          // style={[styles.button, isCompleted? styles.completedButton : undefined]} 
-          activeOpacity={0.8} disabled={isCompleted}>
-              {/* <Text style={[styles.buttonText]}>Delete</Text> */}
-              <AntDesign name="closecircle" size={24} color={isCompleted? "grey" : "red"} />
-          </TouchableOpacity>
+      <View style={[styles.itemContainer, isCompleted ? styles.completedItemContainer : undefined]}>
+        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between"}}>
+            <Text style={[isCompleted ? styles.completedText : undefined,]}>
+              {name}
+            </Text>
+            <TouchableOpacity onPress={handleDelete} activeOpacity={0.8} disabled={isCompleted}>
+              <AntDesign name="closecircle" size={18} color={isCompleted ? "grey" : "red"}/>
+            </TouchableOpacity>
+        </View>
       </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -44,7 +56,7 @@ const styles = StyleSheet.create({
       borderBottomColor: theme.colorCerulean, 
       borderBottomWidth: 2,
       marginBottom: 20,
-      width: 300,
+      width: 250,
     },
     completedItemContainer: {
       backgroundColor: theme.colorLightGrey, 
